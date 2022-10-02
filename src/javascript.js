@@ -1,22 +1,20 @@
 function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
     }
-    return array.slice(0,25);
-  }
+    return array.slice(0, 25);
+}
 
 function setTileTextAndColor(data) {
-    console.log(data);
-
     for (var i = 0; i < data.length; i++) {
         document.getElementById(i + 1).innerHTML = data[i].text;
         toggleBorderColor(i + 1, data[i].difficulty);
@@ -41,23 +39,25 @@ function prepareBoard(reset) {
 }
 
 function toggleTileColor(id) {
-    var defaultBG = "none";
-    var marked = "rgba(37, 84, 192, 0.17)";
-    var done = "rgb(20, 175, 154)";
+    document.getElementById(id).onclick = function (event) {
+        var defaultBG = "none";
+        var marked = "rgba(37, 84, 192, 0.17)";
+        var done = "rgb(20, 175, 154)";
 
-    switch (document.getElementById(id).style.background) {
-        case defaultBG:
+        switch (document.getElementById(id).style.background) {
+            case defaultBG:
             case "":
-            document.getElementById(id).style.background = marked;
-            break;
-        case marked:
-            document.getElementById(id).style.background = done;
-            break;
-        case done:
-            document.getElementById(id).style.background = "";
-            break;
-        default:
-            document.getElementById(id).style.background = "";
+                document.getElementById(id).style.background = marked;
+                break;
+            case marked:
+                document.getElementById(id).style.background = done;
+                break;
+            case done:
+                document.getElementById(id).style.background = "";
+                break;
+            default:
+                document.getElementById(id).style.background = "";
+        }
     }
 }
 
@@ -100,11 +100,6 @@ function resetBackgroundColor() {
     }
 }
 
-function toggleColors(id) {
-    document.getElementById(id).onclick = function (event) {
-        toggleTileColor(id);
-    }
-}
 function toggleIcons() {
     for (var i = 0; i < 25; i++) {
         var elem = document.getElementsByClassName("material-symbols-outlined");
