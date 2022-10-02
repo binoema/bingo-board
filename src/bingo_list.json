@@ -1,0 +1,346 @@
+[
+    {
+        "text": "Do not pop consumable souls",
+        "difficulty": 4
+    },
+    {
+        "text": "No RTSR",
+        "difficulty": 2
+    },
+    {
+        "text": "Do not Homeward Bone/Darksign to reset the maidens",
+        "difficulty": 0
+    },
+    {
+        "text": "Become human before the second boss",
+        "difficulty": 2
+    },
+    {
+        "text": "Use a boss weapon to kill another boss",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Inward with a melee weapon",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill a boss (not Ceaseless or BoC) with the Straight Sword Hilt",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill Sif before O&S",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Pinwheel before O&S",
+        "difficulty": 2
+    },
+    {
+        "text": "Fat-roll a boss, Asylum Demon not included",
+        "difficulty": 1
+    },
+    {
+        "text": "Get 30 Faith",
+        "difficulty": 1
+    },
+    {
+        "text": "Get 3 Fire Keeper Souls",
+        "difficulty": 1
+    },
+    {
+        "text": "THIS IS SPARTA (Kick 5 NPC off a ledge)",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill 4 Bosses without Rings",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill a Boss with 3 Resins",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill a Boss with R2 ony",
+        "difficulty": 1
+    },
+    {
+        "text": "Parry 5 Enemies with 5 different shields",
+        "difficulty": 3
+    },
+    {
+        "text": "Starting weapon only",
+        "difficulty": 4
+    },
+    {
+        "text": "Kill 2 undead dragons",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill 6 Black Knights",
+        "difficulty": 1
+    },
+    {
+        "text": "Collect 3 Embers",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill Super Ornstein",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Gwyndolin",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill Sif without using Crest Of Artorias",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill a boss with a weapon in the left hand",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill 5 Mimics",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill 2 Butchers",
+        "difficulty": 1
+    },
+    {
+        "text": "Rescue Griggs",
+        "difficulty": 2
+    },
+    {
+        "text": "Join the Path Of The Dragon Covenant",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Siegmeyer",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill all 3 Armoured Boars",
+        "difficulty": 1
+    },
+    {
+        "text": "Hold 100,000 souls",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill Priscilla",
+        "difficulty": 1
+    },
+    {
+        "text": "Get a divine weapon (infusion)",
+        "difficulty": 2
+    },
+    {
+        "text": "Get a fire weapon (infusion)",
+        "difficulty": 2
+    },
+    {
+        "text": "Get a magic weapon (infusion)",
+        "difficulty": 2
+    },
+    {
+        "text": "Rescue Laurentius",
+        "difficulty": 2
+    },
+    {
+        "text": "Take Binoculars as starting gift",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Patches in Firelink",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill all 3 giants in Sens",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill Capra Demon",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill Gaping Dragon",
+        "difficulty": 1
+    },
+    {
+        "text": "Enter Blightown from the Depths",
+        "difficulty": 4
+    },
+    {
+        "text": "Kill Moonlight Butterfly with melee only",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill a boss with Pyro only",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill a boss with Sorcery only",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill a boss with only a dagger",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill titanite demon in anor londo",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill a boss using a shield",
+        "difficulty": 2
+    },
+    {
+        "text": "Dont level up before killing 3 Bosses",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Mad Solaire (end of questline)",
+        "difficulty": 2
+    },
+    {
+        "text": "Don't take/buy the Master Key",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill Quelaag only hitting her human body",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill free aim 50 enemies ranged",
+        "difficulty": 1
+    },
+    {
+        "text": "Rescue Rhea",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill a boss with K&M",
+        "difficulty": 1
+    },
+    {
+        "text": "Do Duke skip",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill a boss with a bow",
+        "difficulty": 2
+    },
+    {
+        "text": "Enter Lower Undeadburg by jumping down",
+        "difficulty": 2
+    },
+    {
+        "text": "Join all covenants",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill a boss with a catalyst melee only",
+        "difficulty": 2
+    },
+    {
+        "text": "Trade 3 items with Snuggly",
+        "difficulty": 1
+    },
+    {
+        "text": "Get down to pinwheel without dropping",
+        "difficulty": 3
+    },
+    {
+        "text": "Kill a respawning skelethon with a divine weapon",
+        "difficulty": 2
+    },
+    {
+        "text": "Get to Quelaag without getting poisoned",
+        "difficulty": 2
+    },
+    {
+        "text": "Cut Seath's tail",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Ceaseless without gravity",
+        "difficulty": 2
+    },
+    {
+        "text": "Kindle 20 bonfires",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill a boss with a weapon you don’t meet stat requirements for",
+        "difficulty": 3
+    },
+    {
+        "text": "Cut 7 Tails",
+        "difficulty": 1
+    },
+    {
+        "text": "Bring Ingward to Firelink",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Kirk 3 times",
+        "difficulty": 2
+    },
+    {
+        "text": "50 Strg",
+        "difficulty": 1
+    },
+    {
+        "text": "50 Dex",
+        "difficulty": 1
+    },
+    {
+        "text": "50 Int",
+        "difficulty": 1
+    },
+    {
+        "text": "After 4 Bosses, delete best weapon",
+        "difficulty": 1
+    },
+    {
+        "text": "No Roll 5 Bosses",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Undead Dragon with consumables",
+        "difficulty": 2
+    },
+    {
+        "text": "Pinwheel as second Boss",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill 3 Bosses only Jump R2",
+        "difficulty": 2
+    },
+    {
+        "text": "Buy everything from 3 Merchants",
+        "difficulty": 1
+    },
+    {
+        "text": "Upgrade a Weapon to max",
+        "difficulty": 2
+    },
+    {
+        "text": "After 4 Bosses, delete best spell",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill all Cats in Forest",
+        "difficulty": 2
+    },
+    {
+        "text": "Kill Lautrec in Anor Londo",
+        "difficulty": 1
+    },
+    {
+        "text": "Kill both Hydras",
+        "difficulty": 2
+    }
+]

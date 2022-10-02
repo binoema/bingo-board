@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+        <title>Zoodle Bingo Board</title>
+        <script type="text/javascript" src="bingo_list.json"></script>
+        <script type="text/javascript" src="javascript.js"></script>
+        <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="prepareBoard()">
+        <div class="board">
+                <div class="board-row">
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="1"></span>
+                                <span class="material-symbols-outlined" id="i1"></span>
+                        </span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="2"></span>
+                                <span class="material-symbols-outlined" id="i2"></span>
+                        </span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="3"></span>
+                                <span class="material-symbols-outlined" id="i3"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="4"></span>
+                                <span class="material-symbols-outlined" id="i4"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="5"></span>
+                                <span class="material-symbols-outlined" id="i5"></span></span>
+                </div>
+                <div class="board-row">
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="6"></span>
+                                <span class="material-symbols-outlined" id="i6"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="7"></span>
+                                <span class="material-symbols-outlined" id="i7"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="8"></span>
+                                <span class="material-symbols-outlined" id="i8"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="9"></span>
+                                <span class="material-symbols-outlined" id="i9"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="10"></span>
+                                <span class="material-symbols-outlined" id="i10"></span></span>
+                </div>
+                <div class="board-row">
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="11"></span>
+                                <span class="material-symbols-outlined" id="i11"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="12"></span>
+                                <span class="material-symbols-outlined" id="i12"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="13"></span>
+                                <span class="material-symbols-outlined" id="i13"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="14"></span>
+                                <span class="material-symbols-outlined" id="i14"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="15"></span>
+                                <span class="material-symbols-outlined" id="i15"></span></span>
+                </div>
+                <div class="board-row">
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="16"></span>
+                                <span class="material-symbols-outlined" id="i16"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="17"></span>
+                                <span class="material-symbols-outlined" id="i17"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="18"></span>
+                                <span class="material-symbols-outlined" id="i18"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="19"></span>
+                                <span class="material-symbols-outlined" id="i19"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="20"></span>
+                                <span class="material-symbols-outlined" id="i20"></span></span>
+                </div>
+                <div class="board-row">
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="21"></span>
+                                <span class="material-symbols-outlined" id="i21"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="22"></span>
+                                <span class="material-symbols-outlined" id="i22"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="23"></span>
+                                <span class="material-symbols-outlined" id="i23"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="24"></span>
+                                <span class="material-symbols-outlined" id="i24"></span></span>
+                        <span class="board-cell-wrapper"><span onmousedown="toggleColors(id)" class="board-cell"
+                                        id="25"></span>
+                                <span class="material-symbols-outlined" id="i25"></span></span>
+                </div>
+        </div>
+
+        <button class="button" onclick="prepareBoard(true)">Randomize!</button>
+        <button class="button" onclick="toggleBorder()">Borders on/off</button>
+        <button class="button" onclick="toggleIcons()">Icons on/off</button>
+</body>
+
+
+</html>
