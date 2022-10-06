@@ -1,20 +1,20 @@
-String.prototype.hexEncode = function(){
-    var hex, i;
+String.prototype.hexEncode = function () {
+    let hex, i;
 
-    var result = "";
-    for (i=0; i<this.length; i++) {
+    let result = "";
+    for (i = 0; i < this.length; i++) {
         hex = this.charCodeAt(i).toString(16);
-        result += ("000"+hex).slice(-4);
+        result += ("000" + hex).slice(-4);
     }
 
     return result
 }
 
-String.prototype.hexDecode = function(){
-    var j;
-    var hexes = this.match(/.{1,4}/g) || [];
-    var back = "";
-    for(j = 0; j<hexes.length; j++) {
+String.prototype.hexDecode = function () {
+    let j;
+    let hexes = this.match(/.{1,4}/g) || [];
+    let back = "";
+    for (j = 0; j < hexes.length; j++) {
         back += String.fromCharCode(parseInt(hexes[j], 16));
     }
 
@@ -39,14 +39,14 @@ function shuffle(array) {
 }
 
 function setTileTextAndColor(data) {
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         document.getElementById(i + 1).innerHTML = data[i].text;
         toggleBorderColor(i + 1, data[i].difficulty);
     }
 }
 
-function prepareBoard(reset) {
-    var storedBoard = localStorage.getItem("currentBoard");
+function randomizeBoard(reset) {
+    let storedBoard = localStorage.getItem("currentBoard");
 
     if (reset == false && storedBoard) {
         setTileTextAndColor(JSON.parse(storedBoard));
@@ -54,7 +54,7 @@ function prepareBoard(reset) {
         fetch("bingo_list.json").then(function (response) {
             return response.json();
         }).then(function (data) {
-            var shuffledArray = shuffle(data);
+            let shuffledArray = shuffle(data);
             localStorage.setItem("currentBoard", JSON.stringify(shuffledArray));
             setTileTextAndColor(shuffledArray);
         }).catch(function (error) {
@@ -67,12 +67,10 @@ function prepareBoard(reset) {
 
 function toggleTileColor(id) {
     document.getElementById(id).onclick = function (event) {
-        var defaultBG = "none";
-        var marked = "rgba(37, 84, 192, 0.17)";
-        var done = "rgb(20, 175, 154)";
+        let marked = "rgba(37, 84, 192, 0.17)";
+        let done = "rgb(20, 175, 154)";
 
         switch (document.getElementById(id).style.background) {
-            case defaultBG:
             case "":
                 document.getElementById(id).style.background = marked;
                 break;
@@ -90,15 +88,15 @@ function toggleTileColor(id) {
 
 function toggleBorderColor(id, difficulty) {
 
-    var easy = "circle";
-    var medium = "circle";
-    var hard = "circle";
-    var insane = "circle";
-    
-    var easyColor = "rgb(0, 202, 0)";
-    var mediumColor = "rgb(251 255 0)";
-    var hardColor = "rgb(255, 166, 0)";
-    var insaneColor = "rgb(202, 0, 0)";
+    let easy = "circle";
+    let medium = "circle";
+    let hard = "circle";
+    let insane = "circle";
+
+    let easyColor = "rgb(0, 202, 0)";
+    let mediumColor = "rgb(251 255 0)";
+    let hardColor = "rgb(255, 166, 0)";
+    let insaneColor = "rgb(202, 0, 0)";
 
     switch (difficulty) {
         case 1:
@@ -128,34 +126,105 @@ function toggleBorderColor(id, difficulty) {
 }
 
 function toggleBorder() {
-    for (var i = 0; i < 25; i++) {
-        var elem = document.getElementsByClassName("board-cell");
+    for (let i = 0; i < 25; i++) {
+        let elem = document.getElementsByClassName("board-cell");
         elem[i].classList.toggle("no-border")
     }
 }
 
 function resetBackgroundColor() {
-    for (var i = 0; i < 25; i++) {
-        var elem = document.getElementsByClassName("board-cell");
+    for (let i = 0; i < 25; i++) {
+        let elem = document.getElementsByClassName("board-cell");
         elem[i].style.background = "";
     }
 }
 
 function toggleIcons() {
-    for (var i = 0; i < 25; i++) {
-        var elem = document.getElementsByClassName("material-icons");
+    for (let i = 0; i < 25; i++) {
+        let elem = document.getElementsByClassName("material-icons");
         elem[i].classList.toggle("display-none");
     }
 }
 
-function getSeed() 
-{
-    var storedBoard = localStorage.getItem("currentBoard");
+function addHighlightRow(id) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = (id - 1) * 5;
+
+    while (i < (id * 5)) {
+        elem[i].classList.add("highlight");
+        i += 1;
+    }
+}
+
+function removeHighlightRow(id) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = (id - 1) * 5;
+
+    while (i < (id * 5)) {
+        elem[i].classList.remove("highlight");
+        i += 1;
+    }
+}
+
+function addHighlightColumn(id) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = id - 1;
+
+    while (i < (id + 20)) {
+        elem[i].classList.add("highlight");
+        i += 5;
+    }
+}
+
+function removeHighlightColumn(id) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = id - 1;
+
+    while (i < (id + 20)) {
+        elem[i].classList.remove("highlight");
+        i += 5;
+    }
+}
+
+function addHighlightDiagonal(corner) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = corner == "top" ? 0 : 20;
+    let counter = 0;
+
+    while (i < elem.length && counter < 5) {
+        elem[i].classList.add("highlight");
+        i = corner == "top" ? i + 6 : i - 4;
+        counter += 1;
+    }
+}
+
+function removeHighlightDiagonal(corner) {
+    let elem = document.getElementsByClassName("board-cell");
+
+    let i = corner == "top" ? 0 : 20;
+    let counter = 0;
+
+    while (i < elem.length && counter < 5) {
+        elem[i].classList.remove("highlight");
+        i = corner == "top" ? i + 6 : i - 4;
+        counter += 1;
+    }
+}
+
+function getSeed() {
+    let storedBoard = localStorage.getItem("currentBoard");
     document.getElementById("seed").innerHTML = storedBoard.hexEncode();
 }
 
 function readSeed() {
-    var input = document.getElementById('seedInput').value.trim();
-    var input = input.hexDecode();
+    // Whitespaces entfernen, werden automatisch angefügt
+    let input = document.getElementById('seedInput').value.trim();
+    input = input.hexDecode();
+
     setTileTextAndColor(JSON.parse(input));
 }

@@ -6,103 +6,132 @@
         <title>Bingo Board</title>
         <script type="text/javascript" src="bingo_list.json"></script>
         <script type="text/javascript" src="javascript.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
 </head>
 
-<body onload="prepareBoard(false)">  
-        <div class="board">
-                <div class="board-row">
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="1"></span>
-                                <span class="material-icons" id="i1"></span>
-                        </span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="2"></span>
-                                <span class="material-icons" id="i2"></span>
-                        </span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="3"></span>
-                                <span class="material-icons" id="i3"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="4"></span>
-                                <span class="material-icons" id="i4"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="5"></span>
-                                <span class="material-icons" id="i5"></span></span>
+<body onload="randomizeBoard(false)">
+        <div class="board-wrapper">
+                <div class="row-header-wrapper">
+                        <span class="corner top-left" onmouseover="addHighlightDiagonal('top')"
+                                onmouseout="removeHighlightDiagonal('top')"></span>
+                        <span class="row-header" onmouseover="addHighlightRow(1)"
+                                onmouseout="removeHighlightRow(1)">1</span>
+                        <span class="row-header" onmouseover="addHighlightRow(2)"
+                                onmouseout="removeHighlightRow(2)">2</span>
+                        <span class="row-header" onmouseover="addHighlightRow(3)"
+                                onmouseout="removeHighlightRow(3)">3</span>
+                        <span class="row-header" onmouseover="addHighlightRow(4)"
+                                onmouseout="removeHighlightRow(4)">4</span>
+                        <span class="row-header" onmouseover="addHighlightRow(5)"
+                                onmouseout="removeHighlightRow(5)">5</span>
+                        <span class="corner bottom-left" onmouseover="addHighlightDiagonal('bot')"
+                                onmouseout="removeHighlightDiagonal('bot')"></span>
                 </div>
-                <div class="board-row">
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="6"></span>
-                                <span class="material-icons" id="i6"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="7"></span>
-                                <span class="material-icons" id="i7"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="8"></span>
-                                <span class="material-icons" id="i8"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="9"></span>
-                                <span class="material-icons" id="i9"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="10"></span>
-                                <span class="material-icons" id="i10"></span></span>
-                </div>
-                <div class="board-row">
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="11"></span>
-                                <span class="material-icons" id="i11"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="12"></span>
-                                <span class="material-icons" id="i12"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="13"></span>
-                                <span class="material-icons" id="i13"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="14"></span>
-                                <span class="material-icons" id="i14"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="15"></span>
-                                <span class="material-icons" id="i15"></span></span>
-                </div>
-                <div class="board-row">
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="16"></span>
-                                <span class="material-icons" id="i16"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="17"></span>
-                                <span class="material-icons" id="i17"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="18"></span>
-                                <span class="material-icons" id="i18"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="19"></span>
-                                <span class="material-icons" id="i19"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="20"></span>
-                                <span class="material-icons" id="i20"></span></span>
-                </div>
-                <div class="board-row">
-                        <span class="board-cell-wrapper "><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="21"></span>
-                                <span class="material-icons" id="i21"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="22"></span>
-                                <span class="material-icons" id="i22"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="23"></span>
-                                <span class="material-icons" id="i23"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="24"></span>
-                                <span class="material-icons" id="i24"></span></span>
-                        <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)" class="board-cell"
-                                        id="25"></span>
-                                <span class="material-icons" id="i25"></span></span>
+                <div class="column-wrapper">
+                        <div class="column-header-wrapper">
+                                <span class="column-header" onmouseover="addHighlightColumn(1)"
+                                        onmouseout="removeHighlightColumn(1)">1</span>
+                                <span class="column-header" onmouseover="addHighlightColumn(2)"
+                                        onmouseout="removeHighlightColumn(2)">2</span>
+                                <span class="column-header" onmouseover="addHighlightColumn(3)"
+                                        onmouseout="removeHighlightColumn(3)">3</span>
+                                <span class="column-header" onmouseover="addHighlightColumn(4)"
+                                        onmouseout="removeHighlightColumn(4)">4</span>
+                                <span class="column-header" onmouseover="addHighlightColumn(5)"
+                                        onmouseout="removeHighlightColumn(5)">5</span>
+                        </div>
+                        <div class="board-row">
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="1"></span>
+                                        <span class="material-icons" id="i1"></span>
+                                </span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="2"></span>
+                                        <span class="material-icons" id="i2"></span>
+                                </span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="3"></span>
+                                        <span class="material-icons" id="i3"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="4"></span>
+                                        <span class="material-icons" id="i4"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="5"></span>
+                                        <span class="material-icons" id="i5"></span></span>
+                        </div>
+                        <div class="board-row">
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="6"></span>
+                                        <span class="material-icons" id="i6"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="7"></span>
+                                        <span class="material-icons" id="i7"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="8"></span>
+                                        <span class="material-icons" id="i8"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="9"></span>
+                                        <span class="material-icons" id="i9"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="10"></span>
+                                        <span class="material-icons" id="i10"></span></span>
+                        </div>
+                        <div class="board-row">
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="11"></span>
+                                        <span class="material-icons" id="i11"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="12"></span>
+                                        <span class="material-icons" id="i12"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="13"></span>
+                                        <span class="material-icons" id="i13"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="14"></span>
+                                        <span class="material-icons" id="i14"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="15"></span>
+                                        <span class="material-icons" id="i15"></span></span>
+                        </div>
+                        <div class="board-row">
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="16"></span>
+                                        <span class="material-icons" id="i16"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="17"></span>
+                                        <span class="material-icons" id="i17"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="18"></span>
+                                        <span class="material-icons" id="i18"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="19"></span>
+                                        <span class="material-icons" id="i19"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="20"></span>
+                                        <span class="material-icons" id="i20"></span></span>
+                        </div>
+                        <div class="board-row">
+                                <span class="board-cell-wrapper "><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="21"></span>
+                                        <span class="material-icons" id="i21"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="22"></span>
+                                        <span class="material-icons" id="i22"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="23"></span>
+                                        <span class="material-icons" id="i23"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="24"></span>
+                                        <span class="material-icons" id="i24"></span></span>
+                                <span class="board-cell-wrapper"><span onmousedown="toggleTileColor(id)"
+                                                class="board-cell" id="25"></span>
+                                        <span class="material-icons" id="i25"></span></span>
+                        </div>
                 </div>
         </div>
         <div class="button-box">
-                <button class="button primary" onclick="prepareBoard(true)">Randomize!</button>
+                <button class="button primary" onclick="randomizeBoard(true)">Randomize!</button>
                 <button class="button secondary" onclick="toggleBorder()">Borders on/off</button>
                 <button class="button secondary" onclick="toggleIcons()">Icons on/off</button>
                 <br><br>
