@@ -5,8 +5,11 @@ Mark tasks that you want to plan to purse and mark them as completed once you co
 
 - Display difficulty of tasks as borders and/or icons
 - Randomize board via built in buttons
+- Import/export the seed of your booard and share it with others
 - Template for a DS1 bingo run
 - Can be used as browser source in OBS!
+- Highlight whole rows/columns/diagonals by hovering over the row/column number
+
 
 ## How to setup your own bingo board:
 1. Add you tasks to bingo_list.json, pls follow the predefined format of the tasks!
