@@ -1,3 +1,4 @@
+
 .board-wrapper {
     position: relative;
     display: flex;
@@ -35,7 +36,6 @@
 .column-wrapper {
     display: flex;
     flex-direction: column;
-    padding-bottom: 60px;
 }
 
 .column-header-wrapper {
@@ -89,6 +89,7 @@
     color: white;
     text-align: center;
     text-transform: uppercase;
+    z-index: 2;
 }
 
 .no-border {
@@ -103,10 +104,10 @@
     display: none;
 }
 
-.material-icons {
-    top: 5px;
+.material-symbols-outlined {
+    top: 194px;
     left: 5px;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     position: absolute;
     font-variation-settings:
@@ -114,6 +115,12 @@
         'wght' 400,
         'GRAD' 0,
         'opsz' 48;
+}
+
+.star {
+    top: 5px;
+    left: 215px;
+    color: rgb(95, 218, 255);
 }
 
 .arrow {
@@ -160,38 +167,25 @@
     word-wrap: break-word;
 }
 
-/* CSS */
+.board-button-wrapper {
+    padding: 5px
+}
+
 .button {
-    gap: 10px;
     width: 280px;
     border-radius: 8px;
     font-size: 30px !important;
     border-style: none;
-    box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
-    display: inline-block;
-    font-weight: 500;
     height: 40px;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    outline: none;
-    padding: 10px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
 }
 
 .highlight {
-    background-color: rgba(208, 69, 255, 0.41) !important;
-
-    -webkit-text-stroke: thin;
+    animation: changeToHighlight !important;
+    animation-duration: 0.5s !important;
+    animation-fill-mode: both !important;
+    -webkit-text-stroke: thin !important;
 }
 
 .button:hover {
@@ -214,3 +208,45 @@
     border-top: 8px solid #bbb;
     border-radius: 5px;
 }
+
+.marked {
+    animation: changeToMarked;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.favorite {
+    animation: changeToFavorite;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.denied {
+    animation: changeToDenied;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    top: 40px;
+    left: 50px;
+    font-size: 150px;
+    z-index: 1;
+}
+
+@keyframes changeToMarked {
+    to {background-color: rgb(20, 175, 154);}
+}
+
+@keyframes changeToFavorite {
+  0%   {color:rgb(255, 255, 255)}
+  50%   {color:rgb(234, 234, 0); transform: rotate(120deg);}
+  100% {color:rgb(95, 218, 255); transform: rotate(90deg);}
+}
+
+@keyframes changeToHighlight {
+    to {background-color: rgba(208, 69, 255, 0.41);}
+}
+
+@keyframes changeToDenied {
+    0%   {color:rgb(255, 255, 255); transform: scale(1)}
+    50%   {transform: rotate(270deg);transform: scale(2)}
+    100% {color: rgba(255, 0, 0, 0.758); transform: scale(1);}
+  }

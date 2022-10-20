@@ -41,13 +41,15 @@ function shuffle(array) {
 function setTileTextAndColor(data) {
     for (let i = 0; i < data.length; i++) {
         document.getElementById(i + 1).innerHTML = data[i].text;
-        toggleBorderColor(i + 1, data[i].difficulty);
+        toggleDifficulty(i + 1, data[i].difficulty);
     }
 }
 
 function randomizeBoard(reset) {
     let storedBoard = localStorage.getItem("currentBoard");
 
+    if (reset == false) addEvents();
+        
     if (reset == false && storedBoard) {
         setTileTextAndColor(JSON.parse(storedBoard));
     } else {
@@ -59,34 +61,32 @@ function randomizeBoard(reset) {
             setTileTextAndColor(shuffledArray);
         }).catch(function (error) {
             console.log("error: " + error);
-        });
-
+        });   
         resetBackgroundColor();
+        resetFavoriteIcons();
     }
 }
 
 function toggleTileColor(id) {
-    document.getElementById(id).onclick = function (event) {
-        let marked = "rgba(37, 84, 192, 0.17)";
-        let done = "rgb(20, 175, 154)";
+    let marked = "rgba(37, 84, 192, 0.17)";
+    let done = "rgb(20, 175, 154)";
 
-        switch (document.getElementById(id).style.background) {
-            case "":
-                document.getElementById(id).style.background = marked;
-                break;
-            case marked:
-                document.getElementById(id).style.background = done;
-                break;
-            case done:
-                document.getElementById(id).style.background = "";
-                break;
-            default:
-                document.getElementById(id).style.background = "";
-        }
+    switch (document.getElementById(id).style.background) {
+        case "":
+            document.getElementById(id).classList.toggle("marked");
+            break;
+        case marked:
+            document.getElementById(id).style.background = done;
+            break;
+        case done:
+            document.getElementById(id).style.background = "";
+            break;
+        default:
+            document.getElementById(id).style.background = "";
     }
 }
 
-function toggleBorderColor(id, difficulty) {
+function toggleDifficulty(id, difficulty) {
 
     let easy = "circle";
     let medium = "circle";
@@ -100,22 +100,18 @@ function toggleBorderColor(id, difficulty) {
 
     switch (difficulty) {
         case 1:
-            document.getElementById(id).style.borderColor = easyColor;
             document.getElementById("i" + id).innerHTML = easy;
             document.getElementById("i" + id).style.color = easyColor;
             break;
         case 2:
-            document.getElementById(id).style.borderColor = mediumColor;
             document.getElementById("i" + id).innerHTML = medium;
             document.getElementById("i" + id).style.color = mediumColor;
             break;
         case 3:
-            document.getElementById(id).style.borderColor = hardColor;
             document.getElementById("i" + id).innerHTML = hard;
             document.getElementById("i" + id).style.color = hardColor;
             break;
         case 4:
-            document.getElementById(id).style.borderColor = insaneColor;
             document.getElementById("i" + id).innerHTML = insane;
             document.getElementById("i" + id).style.color = insaneColor;
             break;
@@ -125,24 +121,24 @@ function toggleBorderColor(id, difficulty) {
     }
 }
 
-function toggleBorder() {
-    for (let i = 0; i < 25; i++) {
-        let elem = document.getElementsByClassName("board-cell");
-        elem[i].classList.toggle("no-border")
-    }
-}
-
 function resetBackgroundColor() {
     for (let i = 0; i < 25; i++) {
         let elem = document.getElementsByClassName("board-cell");
         elem[i].style.background = "";
+        elem[i].classList.remove("marked");
+    }
+}
+
+function resetFavoriteIcons() {
+    for (let i = 1; i <= 25; i++) {
+        document.getElementById("i" + i + "s").innerHTML = "";
+        document.getElementById("i" + i + "s").classList.remove("favorite");
     }
 }
 
 function toggleIcons() {
-    for (let i = 0; i < 25; i++) {
-        let elem = document.getElementsByClassName("material-icons");
-        elem[i].classList.toggle("display-none");
+    for (let i = 1; i <= 25; i++) {
+        let elem = document.getElementById("i" + i).classList.toggle("display-none");
     }
 }
 
@@ -164,6 +160,7 @@ function removeHighlightRow(id) {
 
     while (i < (id * 5)) {
         elem[i].classList.remove("highlight");
+
         i += 1;
     }
 }
@@ -227,4 +224,56 @@ function readSeed() {
     input = input.hexDecode();
 
     setTileTextAndColor(JSON.parse(input));
+}
+
+function addEvents() {
+    
+    for (let i = 1; i <= 25; i++) {
+        let elem = document.getElementById(i);
+        elem.addEventListener('auxclick', (e) => {
+            if (e.button == 2) {
+                toggleFavorite(i);
+            }
+        })
+    }
+}
+
+// function setCrossedOut(id) {
+//     if (document.getElementById("i" + id + "s").innerHTML != "close" ) {
+//         document.getElementById("i" + id + "s").innerHTML = "close";
+//         document.getElementById("i" + id + "s").classList.remove("favorite");
+//         document.getElementById("i" + id + "s").classList.add("denied");
+//     } else {
+//         document.getElementById("i" + id + "s").innerHTML = "";
+//         document.getElementById("i" + id + "s").classList.remove("denied");
+//     }
+// }
+
+function toggleFavorite(id) {
+    switch (document.getElementById("i" + id + "s").innerHTML) {
+        case "star":
+            document.getElementById("i" + id + "s").innerHTML = "skull";
+            document.getElementById("i" + id + "s").classList.remove("favorite");
+            document.getElementById("i" + id + "s").classList.add("denied");
+            break;
+        case "skull":
+            document.getElementById("i" + id + "s").innerHTML = "";
+            document.getElementById("i" + id + "s").classList.remove("favorite");
+            break;
+        default:
+            document.getElementById("i" + id + "s").innerHTML = "star";
+            document.getElementById("i" + id + "s").classList.remove("denied");
+            document.getElementById("i" + id + "s").classList.add("favorite");
+            break;
+    }
+
+
+    // if (document.getElementById("i" + id + "s").innerHTML != "star") {
+    //     document.getElementById("i" + id + "s").innerHTML = "star";
+    //     document.getElementById("i" + id + "s").classList.remove("denied");
+    //     document.getElementById("i" + id + "s").classList.add("favorite");
+    // } else {
+    //     document.getElementById("i" + id + "s").innerHTML = "";
+    //     document.getElementById("i" + id + "s").classList.remove("favorite");
+    // }
 }
