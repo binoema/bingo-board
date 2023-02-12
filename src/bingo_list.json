@@ -45,7 +45,8 @@
     },
     {
         "text": "Get 3 Fire Keeper Souls",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 3
     },
     {
         "text": "THIS IS SPARTA (Kick 5 NPC off a ledge)",
@@ -53,7 +54,8 @@
     },
     {
         "text": "Kill 4 Bosses without Rings",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 4
     },
     {
         "text": "Kill a Boss with 3 Resins",
@@ -65,7 +67,8 @@
     },
     {
         "text": "Parry 5 Enemies with 5 different shields",
-        "difficulty": 3
+        "difficulty": 3,
+        "amount": 5
     },
     {
         "text": "Starting weapon only",
@@ -77,11 +80,13 @@
     },
     {
         "text": "Kill 6 Black Knights",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 6
     },
     {
         "text": "Collect 3 Embers",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 3
     },
     {
         "text": "Kill Super Ornstein",
@@ -101,7 +106,8 @@
     },
     {
         "text": "Kill 5 Mimics",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 5
     },
     {
         "text": "Kill 2 Butchers",
@@ -197,7 +203,8 @@
     },
     {
         "text": "Dont level up before killing 3 Bosses",
-        "difficulty": 2
+        "difficulty": 2,
+        "amount": 3
     },
     {
         "text": "Kill Mad Solaire (end of questline)",
@@ -213,7 +220,8 @@
     },
     {
         "text": "Kill free aim 50 enemies ranged",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 50
     },
     {
         "text": "Rescue Rhea",
@@ -269,7 +277,8 @@
     },
     {
         "text": "Kindle 20 bonfires",
-        "difficulty": 2
+        "difficulty": 2,
+        "amount": 20
     },
     {
         "text": "Kill a boss with a weapon you don’t meet stat requirements for",
@@ -277,7 +286,8 @@
     },
     {
         "text": "Cut 7 Tails",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 7
     },
     {
         "text": "Bring Ingward to Firelink",
@@ -301,11 +311,13 @@
     },
     {
         "text": "After 4 Bosses, delete best weapon",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 4
     },
     {
         "text": "No Roll 5 Bosses",
-        "difficulty": 2
+        "difficulty": 2,
+        "amount": 5
     },
     {
         "text": "Kill Undead Dragon with consumables",
@@ -317,11 +329,13 @@
     },
     {
         "text": "Kill 3 Bosses only Jump R2",
-        "difficulty": 2
+        "difficulty": 2,
+        "amount": 3
     },
     {
         "text": "Buy everything from 3 Merchants",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 3
     },
     {
         "text": "Upgrade a Weapon to max",
@@ -329,7 +343,8 @@
     },
     {
         "text": "After 4 Bosses, delete best spell",
-        "difficulty": 1
+        "difficulty": 1,
+        "amount": 4
     },
     {
         "text": "Kill all Cats in Forest",

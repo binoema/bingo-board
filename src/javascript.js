@@ -1,3 +1,5 @@
+let board;
+
 String.prototype.hexEncode = function () {
     let hex, i;
 
@@ -7,7 +9,7 @@ String.prototype.hexEncode = function () {
         result += ("000" + hex).slice(-4);
     }
 
-    return result
+    return result;
 }
 
 String.prototype.hexDecode = function () {
@@ -38,30 +40,41 @@ function shuffle(array) {
     return array.slice(0, 25);
 }
 
-function setTileTextAndColor(data) {
-    for (let i = 0; i < data.length; i++) {
-        document.getElementById(i + 1).innerHTML = data[i].text;
-        toggleDifficulty(i + 1, data[i].difficulty);
+function setTileTextAndColor() {
+    for (let i = 0; i < globalThis.board.length; i++) {
+        document.getElementById(i + 1).innerHTML = globalThis.board[i].text;
+        toggleDifficulty(i + 1, globalThis.board[i].difficulty);
+
+        if (globalThis.board[i].amount > 0) {
+            if (!globalThis.board[i].count) {
+                globalThis.board[i].count = 0;
+            }
+            addCounter(i + 1, globalThis.board[i]);
+        }
+
     }
 }
 
 function randomizeBoard(reset) {
     let storedBoard = localStorage.getItem("currentBoard");
+    globalThis.board = JSON.parse(storedBoard);
 
     if (reset == false) addEvents();
-        
+
     if (reset == false && storedBoard) {
-        setTileTextAndColor(JSON.parse(storedBoard));
+        setTileTextAndColor();
     } else {
         fetch("bingo_list.json").then(function (response) {
             return response.json();
         }).then(function (data) {
             let shuffledArray = shuffle(data);
             localStorage.setItem("currentBoard", JSON.stringify(shuffledArray));
-            setTileTextAndColor(shuffledArray);
+            globalThis.board = shuffledArray;
+            setTileTextAndColor();
         }).catch(function (error) {
             console.log("error: " + error);
-        });   
+        });
+        resetAllCounter();
         resetBackgroundColor();
         resetFavoriteIcons();
     }
@@ -70,13 +83,23 @@ function randomizeBoard(reset) {
 function toggleTileColor(id) {
     let marked = "rgba(37, 84, 192, 0.17)";
     let done = "rgb(20, 175, 154)";
+    let taskCompleted = false;
+
+    if (globalThis.board[id - 1]?.amount > 0 && globalThis.board[id - 1]?.amount > globalThis.board[id - 1]?.count) {
+        taskCompleted = handleCounter(id - 1);
+    } else if (globalThis.board[id - 1]?.amount && globalThis.board[id - 1]?.count && globalThis.board[id - 1]?.amount == globalThis.board[id - 1]?.count) {
+        taskCompleted = false;
+        resetCounter(id - 1);
+    } else {
+        taskCompleted = true;
+    }
 
     switch (document.getElementById(id).style.background) {
         case "":
-            document.getElementById(id).classList.toggle("marked");
-            break;
         case marked:
-            document.getElementById(id).style.background = done;
+            if (taskCompleted) {
+                document.getElementById(id).style.background = done;
+            };
             break;
         case done:
             document.getElementById(id).style.background = "";
@@ -86,12 +109,30 @@ function toggleTileColor(id) {
     }
 }
 
+function handleCounter(id) {
+    globalThis.board[id].count = (globalThis.board[id].count + 1)
+    document.getElementById((id + 1) + 'c').innerHTML = `${globalThis.board[id].count} / ${globalThis.board[id].amount}`;
+    return globalThis.board[id]?.count >= globalThis.board[id].amount;
+}
+
+function resetCounter(id) {
+    globalThis.board[id].count = 0;
+    document.getElementById((id + 1) + 'c').innerHTML = `0 / ${globalThis.board[id].amount}`;
+}
+
+function resetAllCounter() {
+    let allCounter = document.getElementsByClassName("counter");
+    for (var i = allCounter.length - 1; i >= 0; i--) {
+        allCounter[i].remove();
+    }
+}
+
 function toggleDifficulty(id, difficulty) {
 
     let easy = "circle";
     let medium = "circle";
     let hard = "circle";
-    let insane = "circle";
+    let insane = "skull";
 
     let easyColor = "rgb(0, 202, 0)";
     let mediumColor = "rgb(251 255 0)";
@@ -138,7 +179,7 @@ function resetFavoriteIcons() {
 
 function toggleIcons() {
     for (let i = 1; i <= 25; i++) {
-        let elem = document.getElementById("i" + i).classList.toggle("display-none");
+        document.getElementById("i" + i).classList.toggle("display-none");
     }
 }
 
@@ -160,7 +201,6 @@ function removeHighlightRow(id) {
 
     while (i < (id * 5)) {
         elem[i].classList.remove("highlight");
-
         i += 1;
     }
 }
@@ -214,49 +254,39 @@ function removeHighlightDiagonal(corner) {
 }
 
 function getSeed() {
-    let storedBoard = localStorage.getItem("currentBoard");
+    let storedBoard = JSON.stringify(globalThis.board);
     document.getElementById("seed").innerHTML = storedBoard.hexEncode();
 }
 
 function readSeed() {
-    // Whitespaces entfernen, werden automatisch angefügt
+    // Remove whitespaces
     let input = document.getElementById('seedInput').value.trim();
     input = input.hexDecode();
-
-    setTileTextAndColor(JSON.parse(input));
+    globalThis.board = JSON.parse(input);
+    resetAllCounter();
+    resetBackgroundColor();
+    setTileTextAndColor();
 }
 
 function addEvents() {
-    
-    for (let i = 1; i <= 25; i++) {
-        let elem = document.getElementById(i);
-        elem.addEventListener('auxclick', (e) => {
+    let list = document.getElementsByClassName("board-cell-wrapper");
+    for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener('auxclick', (e) => {
             if (e.button == 2) {
-                toggleFavorite(i);
+                toggleFavorite(i + 1);
             }
         })
     }
 }
 
-// function setCrossedOut(id) {
-//     if (document.getElementById("i" + id + "s").innerHTML != "close" ) {
-//         document.getElementById("i" + id + "s").innerHTML = "close";
-//         document.getElementById("i" + id + "s").classList.remove("favorite");
-//         document.getElementById("i" + id + "s").classList.add("denied");
-//     } else {
-//         document.getElementById("i" + id + "s").innerHTML = "";
-//         document.getElementById("i" + id + "s").classList.remove("denied");
-//     }
-// }
-
 function toggleFavorite(id) {
     switch (document.getElementById("i" + id + "s").innerHTML) {
         case "star":
-            document.getElementById("i" + id + "s").innerHTML = "skull";
+            document.getElementById("i" + id + "s").innerHTML = "close";
             document.getElementById("i" + id + "s").classList.remove("favorite");
             document.getElementById("i" + id + "s").classList.add("denied");
             break;
-        case "skull":
+        case "close":
             document.getElementById("i" + id + "s").innerHTML = "";
             document.getElementById("i" + id + "s").classList.remove("favorite");
             break;
@@ -266,14 +296,12 @@ function toggleFavorite(id) {
             document.getElementById("i" + id + "s").classList.add("favorite");
             break;
     }
+}
 
-
-    // if (document.getElementById("i" + id + "s").innerHTML != "star") {
-    //     document.getElementById("i" + id + "s").innerHTML = "star";
-    //     document.getElementById("i" + id + "s").classList.remove("denied");
-    //     document.getElementById("i" + id + "s").classList.add("favorite");
-    // } else {
-    //     document.getElementById("i" + id + "s").innerHTML = "";
-    //     document.getElementById("i" + id + "s").classList.remove("favorite");
-    // }
+function addCounter(id, element) {
+    let counterSpan = document.createElement('span');
+    counterSpan.setAttribute("id", id + 'c');
+    counterSpan.classList.add("counter");
+    document.getElementById(id).parentElement.appendChild(counterSpan);
+    document.getElementById(id + 'c').innerHTML = `${element.count} / ${element.amount}`;
 }
